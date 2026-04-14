@@ -64,13 +64,13 @@ export function Footer() {
             <h4 className="font-semibold text-white mb-4">{t.footer.partners}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="https://madabest.mg" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block flex items-center gap-1">
+                <a href="https://www.madagascarbestdestination.com/en" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block flex items-center gap-1">
                   {t.footer.madabest}
                   <span className="text-xs">↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://soamahatsara.mg" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block flex items-center gap-1">
+                <a href="https://www.soamahatsara.com/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block flex items-center gap-1">
                   {t.footer.soamahatsara}
                   <span className="text-xs">↗</span>
                 </a>

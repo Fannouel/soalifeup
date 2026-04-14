@@ -1,4 +1,5 @@
 import { Header } from '@/components/header'
+import { Intro } from '@/components/intro'
 import { Hero } from '@/components/hero'
 import { HoldingSection } from '@/components/holding-section'
 import { TourismSection } from '@/components/tourism-section'
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen w-full overflow-hidden">
       <Header />
       <Hero />
+      <Intro />
       <HoldingSection />
       <TourismSection />
       <LongevitySection />

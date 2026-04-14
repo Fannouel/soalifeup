@@ -14,7 +14,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="p-24 relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <Image
         src="/hero-dubai-madagascar.jpg"
@@ -26,7 +26,7 @@ export function Hero() {
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-transparent"></div>
-
+      
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
         <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">

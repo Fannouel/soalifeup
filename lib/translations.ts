@@ -9,11 +9,20 @@ export const translations = {
       longevity: 'Longevity',
       contact: 'Contact',
     },
+
     hero: {
       title: 'Elevating Life, Bridging Continents',
       subtitle: 'From Dubai financial power to Madagascar natural treasures, Soa Life cultivates excellence through holding, luxury travel and longevity science.',
       cta: 'Discover Our Universe',
     },
+
+    intro: {
+      title: 'A Global Vision',
+      br: 'of Excellence',
+      description: 'Soa Life is an international holding that designs and connects high-value opportunities between Dubai and Madagascar.',
+      secondary: 'We structure a unique ecosystem combining strategy, immersive experiences and lifestyle oriented towards longevity.',
+    },
+
     holding: {
       title: 'Operational Excellence',
       subtitle: 'The Holding',
@@ -207,10 +216,18 @@ export const translations = {
       longevity: 'Longévité',
       contact: 'Contact',
     },
+
     hero: {
       title: 'Elevating Life, Bridging Continents',
       subtitle: 'De la puissance financière de Dubaï aux trésors naturels de Madagascar, Soa Life cultive l\'excellence à travers le holding, le voyage de luxe et la science de la longévité.',
       cta: 'Découvrir notre Univers',
+    },
+
+    intro: {
+      title: 'Une Vision Globale',
+      br: 'de l\'Excellence',
+      description: 'Soa Life est un holding international qui conçoit et connecte des opportunités à forte valeur entre Dubaï et Madagascar.',
+      secondary: 'Nous structurons un écosystème unique combinant stratégie, expériences immersives et art de vivre orienté longévité.',
     },
 
     holding: {

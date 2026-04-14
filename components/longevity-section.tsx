@@ -41,7 +41,7 @@ export function LongevitySection() {
   ]
 
   return (
-    <section id="longevity" className="py-20 sm:py-32 bg-gradient-to-b from-white via-primary/3 to-white relative overflow-hidden">
+    <section id="longevity" className="py-20 sm:py-20 bg-gradient-to-b from-white via-primary/3 to-white relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-secondary/5 rounded-full -mr-48"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full -ml-40"></div>
