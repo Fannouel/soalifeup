@@ -35,45 +35,55 @@ export function HoldingSection() {
     },
   ];
   return (
-    <section className="w-full py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative w-full py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900">
-            { t.holding.mainTitle }
+        <div className="text-center mb-24">
+          <p className="text-sm tracking-[0.3em] uppercase text-primary/60 mb-4">
+            Global Ecosystem
+          </p>
+
+          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-charcoal mb-6">
+            {t.holding.mainTitle}
           </h2>
-          <p className="mt-4 text-gray-600 text-lg">
-            { t.holding.mainDescription }
+
+          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
+            {t.holding.mainDescription}
           </p>
         </div>
 
         {/* ECOSYSTEM */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-10 mb-28">
+
           {items.map((item, i) => (
-            <Link key={i} 
-                  href={item.href} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block">
-              <div className="group cursor-pointer rounded-2xl overflow-hidden border hover:shadow-xl transition bg-white">
+            <Link
+              key={i}
+              href={item.href}
+              target="_blank"
+              className="group block"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
 
                 {/* IMAGE */}
-                <div className="relative w-full h-48">
+                <div className="relative h-[300px] overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition duration-500"
+                    className="object-cover group-hover:scale-110 transition duration-700"
                   />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold group-hover:text-black">
+                <div className="absolute bottom-0 p-6 text-white">
+                  <h3 className="text-2xl font-semibold mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -81,75 +91,86 @@ export function HoldingSection() {
               </div>
             </Link>
           ))}
+
         </div>
-        <div className="relative bg-gradient-to-br from-primary to-secondary rounded-3xl p-10 mb-20 border overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-primary/50 rounded-full blur-2xl"></div>
 
-          {/* HEADER */}
-          <div className="mb-10 max-w-2xl">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              Notre Approche
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Nous construisons un modèle intégré qui aligne vision stratégique globale
-              et excellence opérationnelle locale, en créant des synergies durables à forte valeur.
-            </p>
-          </div>
+        {/* STRATEGY BLOCK */}
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
 
-          {/* PILIERS */}
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-black"></div>
 
-            <div className="group p-6 rounded-2xl bg-blue-100 border hover:shadow-lg transition">
-              <div className="mb-4 flex justify-center">
-                <div className="p-3 rounded-xl bg-white shadow-sm">
-                  <Globe className="w-5 h-5 text-blue-600" />
-                </div>
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Marchés internationaux
-              </h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Identification et accès à des opportunités globales à forte croissance.
+          <div className="relative z-10 p-12 md:p-16">
+
+            {/* Header */}
+            <div className="mb-16 max-w-2xl text-white">
+              <p className="text-sm tracking-[0.3em] uppercase text-white/50 mb-4">
+                Strategic Approach
+              </p>
+
+              <h3 className="font-serif text-4xl font-semibold mb-6">
+                Notre Approche
+              </h3>
+
+              <p className="text-white/80 leading-relaxed">
+                Nous construisons un modèle intégré alignant vision stratégique globale et excellence opérationnelle locale, en créant des synergies durables à forte valeur.
               </p>
             </div>
 
-            <div className="group p-6 rounded-2xl bg-blue-100 border hover:shadow-lg transition">
-              <div className="mb-4 flex justify-center">
-                <div className="p-3 rounded-xl bg-white shadow-sm">
-                  <Leaf className="w-5 h-5 text-green-600" />
-                </div>
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Ressources locales premium
-              </h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Valorisation durable et éthique des richesses naturelles malagasy.
-              </p>
+            {/* PILIERS */}
+            <div className="grid md:grid-cols-3 gap-8">
+
+              {[
+                {
+                  icon: Globe,
+                  title: "Marchés internationaux",
+                  desc: "Accès à des opportunités globales à forte croissance."
+                },
+                {
+                  icon: Leaf,
+                  title: "Ressources locales premium",
+                  desc: "Valorisation durable des richesses naturelles malagasy."
+                },
+                {
+                  icon: Settings,
+                  title: "Exécution opérationnelle",
+                  desc: "Maîtrise des opérations terrain avec excellence."
+                }
+              ].map((item, i) => {
+                const Icon = item.icon
+
+                return (
+                  <div
+                    key={i}
+                    className="group p-8 border border-white/10 rounded-2xl 
+                              hover:border-primary/40 transition-all duration-500"
+                  >
+                    <div className="mb-6">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                )
+              })}
+
             </div>
 
-            <div className="group p-6 rounded-2xl bg-blue-100 border hover:shadow-lg transition">
-              <div className="mb-4 flex justify-center">
-                <div className="p-3 rounded-xl bg-white shadow-sm">
-                  <Settings className="w-5 h-5 text-gray-700" />
-                </div>
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                Expertise opérationnelle
-              </h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Exécution rigoureuse et maîtrise des opérations terrain à haute performance.
-              </p>
+            {/* FOOT NOTE */}
+            <div className="mt-12 pt-6 border-t border-white/10 text-white/50 text-sm">
+              Une approche conçue pour générer un impact économique durable et scalable.
             </div>
 
           </div>
 
-          {/* FOOT NOTE (optionnel premium) */}
-          <div className="mt-10 pt-6 border-t text-sm text-gray-500">
-            Une approche conçue pour générer un impact économique durable et scalable.
-          </div>
+        </div>
 
-        </div>  
       </div>
     </section>
   )
