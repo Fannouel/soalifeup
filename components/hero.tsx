@@ -4,17 +4,45 @@ import { useContext } from 'react'
 import Image from 'next/image'
 import { LanguageContext } from '@/app/layout-provider'
 import { translations } from '@/lib/translations'
+import { useRef, useEffect, useState } from "react";
 
 export function Hero() {
   const { language } = useContext(LanguageContext)
   const t = translations[language]
+  const [show, setShow] = useState(true);
   const handleScroll = () => {
     const element = document.getElementById('holding')
     element?.scrollIntoView({ behavior: 'smooth' })
   }
+  const heroRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // true = hero visible
+        if (entry.isIntersecting) {
+          setShow(false); // dans le hero → cacher header
+        } else {
+          setShow(true); // hors hero → afficher header
+        }
+      },
+      {
+        threshold: 0.1, // déclenche quand 10% du hero est visible
+      }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
+  }, []);
   return (
-    <section className="p-24 relative w-full h-screen overflow-hidden">
+    <section className="p-24 relative w-full h-screen overflow-hidden" ref={heroRef}>
       {/* Background Image */}
       <Image
         src="/hero-dubai-madagascar.jpg"
