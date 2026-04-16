@@ -52,118 +52,156 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="py-20 sm:py-20 bg-gradient-to-b from-white to-primary/3 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-charcoal mb-4">
+    <section id="contact" className="relative py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      {/* Glow */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+
+        {/* Header */}
+        <div className="text-center mb-24">
+          <p className="text-sm tracking-[0.3em] uppercase text-primary/60 mb-4">
+            Private Inquiry
+          </p>
+
+          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-charcoal mb-6">
             {t.contact.title}
           </h2>
-          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
+
+          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
             {t.contact.mainDescription}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {/* Contact Info */}
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+          {/* LEFT - Contact Info */}
+          <div className="space-y-8">
+
             {contactInfo.map((info, index) => {
               const Icon = info.icon
+
               return (
-                <div key={index} className="flex gap-4 p-4 rounded-lg hover:bg-primary/5 transition-all duration-300 transform hover:translate-x-2">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/15 hover:bg-primary/25 transition-colors">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
+                <div
+                  key={index}
+                  className="flex items-start gap-5 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center 
+                                  group-hover:bg-primary/20 transition">
+                    <Icon className="w-5 h-5 text-primary" />
                   </div>
+
                   <div>
-                    <p className="text-sm font-semibold text-charcoal/60">{info.label}</p>
-                    <p className="text-lg font-semibold text-charcoal">{info.value}</p>
+                    <p className="text-sm uppercase tracking-wider text-charcoal/50 mb-1">
+                      {info.label}
+                    </p>
+                    <p className="text-lg font-medium text-charcoal">
+                      {info.value}
+                    </p>
                   </div>
                 </div>
               )
             })}
+
+            {/* Extra note */}
+            <p className="text-sm text-charcoal/50 pt-4">
+              Nous répondons sous 24 à 48 heures. Toutes les demandes sont traitées de manière confidentielle.
+            </p>
+
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg border border-primary/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder={t.contact.name}
-                  value={formData.name}
+          {/* RIGHT - Form */}
+          <div className="relative">
+
+            {/* Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl blur-2xl"></div>
+
+            <div className="relative bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-xl border border-gray-200">
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder={t.contact.name}
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="px-4 py-3 border-b border-gray-300 bg-transparent focus:outline-none focus:border-primary transition"
+                    required
+                  />
+
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder={t.contact.email}
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="px-4 py-3 border-b border-gray-300 bg-transparent focus:outline-none focus:border-primary transition"
+                    required
+                  />
+                </div>
+
+                <select
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  className="px-4 py-3 bg-primary/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-white transition-all text-charcoal placeholder:text-charcoal/50"
+                  className="w-full px-4 py-3 border-b border-gray-300 bg-transparent focus:outline-none focus:border-primary transition"
+                  required
+                >
+                  <option value="">{t.contact.selectSubject}</option>
+                  {t.contact.subjects.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
+                </select>
+
+                <textarea
+                  name="message"
+                  placeholder={t.contact.message}
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5}
+                  className="w-full px-4 py-3 border-b border-gray-300 bg-transparent focus:outline-none focus:border-primary transition resize-none"
                   required
                 />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={t.contact.email}
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="px-4 py-3 bg-primary/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-white transition-all text-charcoal placeholder:text-charcoal/50"
-                  required
-                />
-              </div>
 
-              <select
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-primary/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-white transition-all text-charcoal"
-                required
-              >
-                <option value="">{t.contact.selectSubject}</option>
-                {t.contact.subjects.map((option, index) => (
-                  <option key={index} value={option}>{option}</option>
-                ))}
-                        {/* <option value="investment">Opportunités d'Investissement</option>
-                        <option value="tourism">Voyage Exclusif</option>
-                        <option value="longevity">Produits Longévité</option>
-                        <option value="partnership">Partenariats</option>
-                        <option value="other">Autre</option> */}
-              </select>
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-charcoal text-white rounded-full 
+                            hover:bg-primary transition-all duration-300"
+                >
+                  {t.contact.send}
+                </button>
 
-              <textarea
-                name="message"
-                placeholder={t.contact.message}
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className="w-full px-4 py-3 bg-primary/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 focus:bg-white transition-all text-charcoal placeholder:text-charcoal/50 resize-none"
-                required
-              ></textarea>
+              </form>
 
-              <button
-                type="submit"
-                className="w-full px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {t.contact.send}
-              </button>
-            </form>
+            </div>
+
           </div>
+
         </div>
 
-        {/* Social Links */}
-        <div className="flex justify-center items-center gap-6 pt-8 border-t border-primary/10">
-          <span className="text-charcoal/70 font-medium">{t.contact.followUs}</span>
+        {/* Social */}
+        <div className="flex justify-center items-center gap-6 pt-16">
+          <span className="text-charcoal/50 uppercase tracking-wider text-sm">
+            {t.contact.followUs}
+          </span>
+
           {socialLinks.map((link, index) => {
             const Icon = link.icon
             return (
               <a
                 key={index}
                 href={link.href}
-                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                aria-label="Social link"
+                className="w-10 h-10 flex items-center justify-center rounded-full 
+                          border border-gray-300 hover:bg-primary hover:text-white transition"
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4" />
               </a>
             )
           })}
         </div>
+
       </div>
     </section>
   )

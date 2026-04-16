@@ -28,14 +28,14 @@ export function HoldingSection() {
       href: "https://www.soamahatsara.com",
     },
     {
-      title: "Madabest",
+      title: "Madagascar Best Destination",
       desc: "Tour opérateur spécialisé dans les expériences immersives et haut de gamme à Madagascar",
       image: "/madabest.png",
       href: "https://www.madagascarbestdestination.com",
     },
   ];
   return (
-    <section className="w-full py-24 bg-white">
+    <section className="w-full py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* HEADER */}

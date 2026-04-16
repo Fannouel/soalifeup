@@ -35,73 +35,105 @@ export function TourismSection() {
   ]
 
   return (
-    <section id="tourism" className="py-20 sm:py-20 bg-gradient-to-b from-white to-primary/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-charcoal mb-4">
-            {t.tourism.title}
+    <section id="tourism" className="relative bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+
+        {/* Header */}
+        <div className="text-center mb-20">
+          <p className="text-sm tracking-[0.3em] uppercase text-primary/60 mb-4">
+            Experiences by Madabest
+          </p>
+
+          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-charcoal mb-6">
+            Voyages Immersifs & Destinations Privées
           </h2>
-          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-            {t.tourism.subtitle}
+
+          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
+            Des expériences uniques, conçues pour offrir une immersion totale entre luxe, nature et culture malagasy.
           </p>
         </div>
 
         {/* Experience Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-4 gap-10 mb-24">
           {experiences.map((exp, index) => {
             const Icon = exp.icon
+
             return (
               <div 
                 key={index}
-                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-primary/10 hover:border-primary/40 transform hover:-translate-y-2"
+                className="group relative p-10 bg-white/80 backdrop-blur-xl rounded-2xl border border-gray-200 
+                          hover:border-primary/40 transition-all duration-500 
+                          hover:-translate-y-3 hover:shadow-2xl"
               >
-                <div className="inline-block p-3 bg-primary/10 rounded-lg mb-4 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <Icon className="w-6 h-6 text-primary" />
+                {/* Glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl"></div>
+
+                <div className="relative z-10">
+
+                  <div className="mb-6">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
+
+                  <h3 className="text-xl font-semibold text-charcoal mb-4">
+                    {exp.title}
+                  </h3>
+
+                  <p className="text-charcoal/70 leading-relaxed">
+                    {exp.description}
+                  </p>
+
                 </div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">
-                  {exp.title}
-                </h3>
-                <p className="text-charcoal/70 leading-relaxed">
-                  {exp.description}
-                </p>
               </div>
             )
           })}
         </div>
 
-        {/* Featured Experience with Image */}
-        <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+        {/* Featured Experience */}
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+
           <Image
             src="/luxury-cruise.jpg"
             alt="Luxury cruise experience"
-            width={1200}
-            height={400}
-            className="w-full h-25 object-cover"
+            width={1400}
+            height={600}
+            className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/60 to-transparent"></div>
-          
-          <div className="absolute inset-0 flex items-center p-12">
-            <div className="max-w-2xl z-10 space-y-6">
-              <h3 className="font-serif text-4xl font-bold text-white leading-tight">
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+
+          {/* Content */}
+          <div className="absolute inset-0 flex items-center px-10 md:px-20">
+            <div className="max-w-xl text-white space-y-6">
+
+              <p className="text-sm tracking-[0.3em] uppercase text-white/60">
+                Signature Experience
+              </p>
+
+              <h3 className="font-serif text-4xl md:text-5xl font-semibold leading-tight">
                 {t.tourism.highlight.title}
               </h3>
-              <p className="text-lg text-white/95 leading-relaxed">
+
+              <p className="text-lg text-white/90 leading-relaxed">
                 {t.tourism.highlight.description}
               </p>
-              
 
               <Link
                 target="_blank" 
                 rel="noopener noreferrer"
                 href="https://www.madagascarbestdestination.com/en"
-                className="inline-flex px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-block px-8 py-3 bg-white text-black font-medium rounded-full 
+                          hover:bg-primary hover:text-white transition-all duration-300"
               >
                 {t.tourism.highlight.button}
               </Link>
+
             </div>
           </div>
+
         </div>
+
       </div>
     </section>
   )

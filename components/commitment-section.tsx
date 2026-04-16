@@ -29,60 +29,99 @@ export function CommitmentSection() {
   ]
 
   return (
-    <section className="py-20 sm:py-20 bg-gradient-to-b from-primary/5 via-white to-secondary/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-charcoal mb-4">
+    <section className="relative py-15 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+
+      {/* Glow décoratif */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-3xl"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+
+        {/* Header */}
+        <div className="text-center mb-24">
+          <p className="text-sm tracking-[0.3em] uppercase text-primary/60 mb-4">
+            Our Foundation
+          </p>
+
+          <h2 className="font-serif text-4xl md:text-6xl font-semibold text-charcoal mb-6">
             {t.commitment.title}
           </h2>
-          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
+
+          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
             {t.commitment.missionDesc}
           </p>
         </div>
 
-        {/* Values Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Values */}
+        <div className="grid md:grid-cols-3 gap-10 mb-28">
+
           {values.map((value, index) => {
             const Icon = value.icon
+
             return (
-              <div key={index} className="text-center group p-6 rounded-xl hover:bg-white/50 transition-all duration-300 transform hover:scale-105">
-                <div className="inline-block p-4 bg-primary/15 rounded-full mb-6 group-hover:bg-primary/30 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+              <div
+                key={index}
+                className="group p-10 bg-white/80 backdrop-blur-xl rounded-2xl border border-gray-200
+                          hover:border-primary/40 transition-all duration-500 
+                          hover:-translate-y-3 hover:shadow-2xl text-left"
+              >
+                <div className="mb-6">
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-charcoal mb-4">
+
+                <h3 className="text-xl font-semibold text-charcoal mb-3">
                   {value.title}
                 </h3>
+
                 <p className="text-charcoal/70 leading-relaxed">
                   {value.description}
                 </p>
               </div>
             )
           })}
+
         </div>
 
-        {/* Mission Statement with Image */}
-        <div className="relative overflow-hidden rounded-2xl p-12 sm:p-16 text-white shadow-2xl">
+        {/* Manifesto Block */}
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+
+          {/* Background */}
           <Image
             src="/commitment-values.jpg"
-            alt="Commitment to values"
-            fill
-            className="absolute inset-0 object-cover -z-10"
+            alt="Commitment"
+            width={1400}
+            height={600}
+            className="w-full h-[500px] object-cover group-hover:scale-105 transition duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-charcoal/70 to-secondary/60 -z-10"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
-          <div className="relative z-10 max-w-3xl">
-            <h3 className="font-serif text-3xl sm:text-4xl font-bold mb-6 text-black">
-              {t.commitment.mission_state.title}
-            </h3>
-            <p className="text-lg text-black/90 leading-relaxed mb-6">
-              {t.commitment.mission_state.p1}
-            </p>
-            <p className="text-lg text-black/90 leading-relaxed">
-              {t.commitment.mission_state.p2}
-            </p>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+
+          {/* Content */}
+          <div className="absolute inset-0 flex items-center px-10 md:px-20">
+            <div className="max-w-2xl text-white space-y-6">
+
+              <p className="text-sm tracking-[0.3em] uppercase text-white/60">
+                Our Commitment
+              </p>
+
+              <h3 className="font-serif text-4xl md:text-5xl font-semibold leading-tight">
+                {t.commitment.mission_state.title}
+              </h3>
+
+              <p className="text-lg text-white/90 leading-relaxed">
+                {t.commitment.mission_state.p1}
+              </p>
+
+              <p className="text-white/70 leading-relaxed">
+                {t.commitment.mission_state.p2}
+              </p>
+
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
   )
